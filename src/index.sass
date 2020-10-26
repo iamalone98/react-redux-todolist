@@ -1,0 +1,400 @@
+body
+
+  margin: 0
+  padding: 0
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: 'Roboto', sans-serif
+  border: none
+
+.wrapper
+
+  position: relative
+  width: 100vw
+  height: 100vh
+
+.todo
+
+  display: flex
+  width: 746px
+  height: 529px
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  box-shadow: 1px 2px 20px #f3f3f3
+  border-radius: 10px
+
+  &__sidebar
+
+    padding: 60px 10px
+    width: 200px
+    display: inline-block
+    background: rgb(244,246,248)
+    border-radius: 10px 0 0 10px
+    position: relative
+
+    &_item a.active
+
+      background: #FFFFFF
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05)
+
+    &_item.alltasks
+
+      margin-bottom: 20px
+
+    &_item.addtask
+
+      margin-top: 20px
+      position: relative
+
+      img
+
+        width: 14px
+        height: 14px
+
+      p
+
+        color: rgba(0,0,0,.4)
+        font-weight: 600
+        font-size: 14px
+
+    &_item
+
+      position: relative
+      list-style-type: none
+      margin: 10px 0
+      display: flex
+      align-items: center
+
+      a
+
+        padding: 10px 12px
+        width: 100%
+        transition: 0.2s
+        border-radius: 4px
+        color: #000
+
+        &:hover
+
+          background: #fff
+          cursor: pointer
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05)
+
+      &_icon
+
+        width: 10px
+        height: 10px
+        display: inline-block
+        border-radius: 50%
+
+      &_icon.green
+        background: #42B883
+      &_icon.blue
+        background: #64C4ED
+      &_icon.lightgreen
+        background: #B6E6BD
+      &_icon.gray
+        background: #C9D1D3
+      &_icon.pink
+        background: #FFBBCC
+      &_icon.black
+        background: #09011A
+      &_icon.orange
+        background: #FF6464
+      &_icon.purple
+        background: #C355F5
+
+      p
+
+        display: inline-block
+        margin-left: 10px
+        font-size: 15px
+        font-weight: 500
+
+      &_addmenu
+
+        width: 235px
+        height: 148px
+        position: absolute
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05)
+        border-radius: 10px
+        background: #fff
+        padding: 18px
+        bottom: -40px
+        z-index: 1001
+
+        &_close
+
+          right: -7px
+          top: -7px
+          position: absolute
+
+          &:hover
+
+            cursor: pointer
+
+        input
+
+          padding: 7px 10px
+          border: 1px solid #EFEFEF
+          border-radius: 4px
+          outline: none
+          display: block
+          width: 100%
+          font-size: 14px
+
+          &::placeholder
+
+            color: #C7C7C7
+
+        button
+
+          font-weight: 400
+          letter-spacing: 1px
+          font-size: 14px
+          width: 100%
+          padding: 10px 0
+          color: #FFF
+          background: #4DD599
+          border-radius: 4px
+          border: none
+          display: block
+          transition: 0.3s
+
+          &:hover
+
+            cursor: pointer
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2)
+
+        &-list
+
+          display: flex
+          padding: 13px 0
+
+        &-item
+
+          list-style-type: none
+          flex: 1
+
+          i.green
+            background: #42B883
+          i.blue
+            background: #64C4ED
+          i.lightgreen
+            background: #B6E6BD
+          i.gray
+            background: #C9D1D3
+          i.pink
+            background: #FFBBCC
+          i.black
+            background: #09011A
+          i.orange
+            background: #FF6464
+          i.purple
+            background: #C355F5
+
+          i.active
+
+            border: 2px solid #525252
+
+          i
+
+            width: 20px
+            height: 20px
+            display: inline-block
+            border-radius: 50%
+            background: #FFBBCC
+
+            &:hover
+
+              border: 2px solid #525252
+              cursor: pointer
+
+  &__task
+
+    margin-bottom: 40px
+
+  &__tasks::-webkit-scrollbar
+    width: 0
+
+  &__tasks
+
+    flex: 1
+    display: inline-block
+    border-radius: 0 10px 10px 0
+    padding: 55px
+    overflow-Y: auto
+
+    hr
+
+      background: #F2F2F2
+      height: 1px
+      border: none
+      margin-top: 20px
+      margin-bottom: 30px
+
+    h1
+
+      font-family: 'Montserrat', sans-serif
+      font-size: 32px
+      font-weight: bold
+      color: #64C4ED
+
+      &:hover
+
+        cursor: pointer
+
+        img
+
+          display: inline-block
+
+    h1.green
+      color: #42B883
+    h1.blue
+      color: #64C4ED
+    h1.lightgreen
+      color: #B6E6BD
+    h1.gray
+      color: #C9D1D3
+    h1.pink
+      color: #FFBBCC
+    h1.black
+      color: #09011A
+    h1.orange
+      color: #FF6464
+    h1.purple
+      color: #C355F5
+
+    img
+
+      display: none
+      margin-left: 15px
+
+      &:hover
+
+        cursor: pointer
+
+    &_addtask
+
+      position: relative
+
+      &-form
+
+        button
+
+          display: inline-block
+          padding: 10px 15px
+          border-radius: 4px
+          transition: 0.3s
+
+          &:hover
+
+            cursor: pointer
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1)
+
+        &-add
+
+          background: #4DD599
+          color: #fff
+          margin-right: 10px
+
+        &-close
+
+          background: #F4F6F8
+          color: #9C9C9C
+
+        input
+
+          margin: 20px 0
+          padding: 7px 10px
+          border: 1px solid #EFEFEF
+          border-radius: 4px
+          outline: none
+          display: block
+          width: 100%
+          font-size: 14px
+
+          &::placeholder
+
+            color: #C7C7C7
+
+      &-btn
+
+        display: flex
+        align-items: center
+
+        &:hover
+
+          cursor: pointer
+
+        img
+
+          width: 14px
+          height: 14px
+          display: block
+          margin-left: 0
+
+        p
+
+          color: rgba(0,0,0,.4)
+          font-weight: 600
+          font-size: 14px
+          margin-left: 20px
+
+    &_item
+
+      display: flex
+      align-items: center
+      margin-bottom: 20px
+
+      &:hover
+
+        cursor: pointer
+
+      p
+
+        margin-left: 15px
+        font-size: 16px
+        font-weight: 400
+
+      &-input
+
+        display: none
+
+        &:checked + .todo__tasks_item-label
+
+          background: #4DD599
+          border: none
+
+          &::before
+
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            content: ''
+            display: block
+            background: url('./checked.svg') no-repeat
+            width: 10px
+            height: 8px
+
+      &-label
+
+        display: inline-block
+        width: 20px
+        height: 20px
+        left: 255px
+        top: 147px
+        border: 2px solid #E8E8E8
+        border-radius: 50%
+        position: relative
+        top: 0
+        left: 0
+
+        &:hover
+
+          cursor: pointer
