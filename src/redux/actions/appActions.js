@@ -24,7 +24,7 @@ export const renameTask = (item) => ({
 });
 
 export const fetchLists = () => (dispatch) => {
-  fetch('http://localhost:3000/db.json')
+  fetch('/db.json')
     .then(res => res.json())
     .then(data => dispatch(setLists(data.goals)))
 }
