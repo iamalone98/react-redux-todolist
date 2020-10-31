@@ -1,58 +1,18 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux';
-import { addTask, renameTask } from '../../redux/actions/appActions';
+import React from 'react'
+import useTask from '../../hooks/useTask';
 import AddTask from './AddTask';
 import Item from './Item'
 
-const Task = ({ id, addTask, renameTask, items, text, color }) => {
-  const [showAdd, setShowAdd] = useState(false);
-  const [showRename, setShowRename] = useState(false);
-  const [value, setValue] = useState('');
-  const [rename, setRename] = useState(text);
-
-  let maxId = 0;
-
-  items.forEach(element => {
-    maxId = Math.max(maxId, element.id);
-  });
-
-  const onToggleHandler = () => {
-    setShowAdd(!showAdd);
-  }
-
-  const onToggleRenameHandler = () => {
-    setShowRename(!showRename);
-  }
-
-  const onChangeRenameHandler = (e) => {
-    setRename(e.target.value);
-  }
-
-  const onChangeHandler = (e) => {
-    setValue(e.target.value);
-  }
-
-  const onAddTaskHandler = () => {
-    if (!value.trim()) return alert('Поле не может быть пустым!');
-    addTask({
-      parentId: id,
-      task: {
-        id: ++maxId,
-        text: value,
-        completed: false,
-      }
-    });
-    setValue('');
-  }
-
-  const onRenameTaskHandler = () => {
-    if (!rename.trim()) return alert('Поле не может быть пустым!');
-    renameTask({
-      id,
-      text: rename
-    })
-    onToggleRenameHandler()
-  }
+const Task = ({ id, items, text, color }) => {
+  const {
+    value: { newtask, retask },
+    showForm,
+    showRename,
+    onRenameTaskHandler,
+    onAddTaskHandler,
+    onToggleHandler,
+    onToggleRenameHandler,
+    onChangeHandler } = useTask({ parentId: id, text });
 
   return (
     <div className="todo__task">
@@ -62,7 +22,7 @@ const Task = ({ id, addTask, renameTask, items, text, color }) => {
         </h1>
       )}
       {showRename && (
-        <AddTask onAdd={onRenameTaskHandler} onChange={onChangeRenameHandler} value={rename} onToggleHandler={onToggleRenameHandler} text={'Сменить название'} />
+        <AddTask onAdd={onRenameTaskHandler} onChange={onChangeHandler} value={retask} name="retask" onToggleHandler={onToggleRenameHandler} text={'Сменить название'} />
       )}
       <hr />
       <div className="todo__tasks_list">
@@ -71,23 +31,18 @@ const Task = ({ id, addTask, renameTask, items, text, color }) => {
         })}
       </div>
       <div className="todo__tasks_addtask">
-        {!showAdd && (
+        {!showForm && (
           <div onClick={onToggleHandler} className="todo__tasks_addtask-btn">
             <img src="./addtask.svg" alt="addtask" />
             <p>Новая задача</p>
           </div>
         )}
-        {showAdd && (
-          <AddTask text={'Добавить задачу'} onAdd={onAddTaskHandler} onToggleHandler={onToggleHandler} value={value} onChange={onChangeHandler} />
+        {showForm && (
+          <AddTask text={'Добавить задачу'} name="newtask" onAdd={onAddTaskHandler} onToggleHandler={onToggleHandler} value={newtask} onChange={onChangeHandler} />
         )}
       </div>
     </div>
   )
 }
 
-const mapDis = (dispatch) => ({
-  addTask: (item) => dispatch(addTask(item)),
-  renameTask: (item) => dispatch(renameTask(item))
-})
-
-export default connect(null, mapDis)(Task);
+export default Task;

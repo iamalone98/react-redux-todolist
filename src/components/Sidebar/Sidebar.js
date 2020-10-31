@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import useGetGoals from '../../hooks/useGetGoals'
 import AddForm from './AddForm'
 import Item from './Item'
 
-const Sidebar = ({ goals }) => {
+const Sidebar = () => {
+  const { goals } = useGetGoals();
   const [showForm, setShowForm] = useState(false);
   const toggleForm = (e) => {
     e.preventDefault();
@@ -35,8 +36,4 @@ const Sidebar = ({ goals }) => {
   )
 }
 
-const mapState = (state) => ({
-  goals: state.appReducer.goals
-})
-
-export default connect(mapState)(Sidebar)
+export default Sidebar

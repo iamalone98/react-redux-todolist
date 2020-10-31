@@ -1,1 +1,1 @@
-export { fetchLists, addGoal, toggleCompleted, renameTask } from './appActions'
+export { fetchLists, addGoal, toggleCompleted, renameTask, addTask } from './appActions'

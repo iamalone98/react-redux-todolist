@@ -1,13 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Switch, Route, useParams } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Task from './Task'
 
 const Tasks = ({ tasks }) => {
-  const { id } = useParams();
   return (
     <div className="todo__tasks">
-      <h1>{id}</h1>
       <Switch>
         <Route exact path="/">
           {tasks && tasks.map((item) => (

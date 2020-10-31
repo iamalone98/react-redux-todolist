@@ -1,33 +1,8 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux';
-import { addGoal } from "./../../redux/actions";
+import React from 'react'
+import useAddForm from '../../hooks/useAddForm'
 
-const AddForm = ({ toggleForm, addGoal, goals }) => {
-  const [colors] = useState(['gray', 'green', 'blue', 'pink', 'lightgreen', 'purple', 'black', 'orange']);
-  const [currentColor, setCurrentColor] = useState('blue');
-  const [value, setValue] = useState('');
-
-  let maxId = 0;
-
-  goals.forEach(element => {
-    maxId = Math.max(maxId, element.id);
-  });
-
-  const onChangeHandler = (e) => {
-    setValue(e.target.value);
-  }
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    if (!value.trim()) return alert('Поле не может быть пустым!');
-    addGoal({
-      id: ++maxId,
-      color: currentColor,
-      text: value,
-      tasks: [],
-    });
-  }
-
+const AddForm = ({ toggleForm }) => {
+  const { value, colors, currentColor, setCurrentColor, onChangeHandler, onSubmitHandler } = useAddForm();
   return (
     <div className="todo__sidebar_item_addmenu">
       <form onSubmit={onSubmitHandler}>
@@ -51,12 +26,4 @@ const AddForm = ({ toggleForm, addGoal, goals }) => {
   )
 }
 
-const mapState = (state) => ({
-  goals: state.appReducer.goals
-})
-
-const mapDis = (dispatch) => ({
-  addGoal: (item) => dispatch(addGoal(item)),
-})
-
-export default connect(mapState, mapDis)(AddForm)
+export default AddForm

@@ -18,9 +18,9 @@ export const toggleCompleted = (id) => ({
   payload: id
 });
 
-export const renameTask = (id) => ({
+export const renameTask = (item) => ({
   type: "RENAME_TASK",
-  payload: id
+  payload: item
 });
 
 export const fetchLists = () => (dispatch) => {

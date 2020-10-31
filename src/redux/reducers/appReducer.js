@@ -34,7 +34,7 @@ const sidebarReducer = (state = initialState, action) => {
       return { ...state, goals: newItemsCompleted };
     case 'RENAME_TASK':
       let result = state.goals.map((item) => {
-        if (item.id === action.payload.id) {
+        if (item.id === action.payload.parentId) {
           item.text = action.payload.text
           return item;
         }
