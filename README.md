@@ -1,6 +1,6 @@
 ## DEMO
 
-[Click to go](https://react-todolist-deploy.herokuapp.com/)
+[Click to go](https://react-redux-todolist.vercel.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
